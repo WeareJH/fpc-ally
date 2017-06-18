@@ -36,10 +36,8 @@ class Data extends ConfigData
     public function getHandlers() : array
     {
         return Collection::make($this->_data)
-            ->flatMap(function ($handlers) {
-                return array_map(function ($handlerConfig) {
-                    return $this->objectManager->get($handlerConfig['handler']);
-                }, $handlers);
+            ->map(function ($handlerConfig) {
+                return $this->objectManager->get($handlerConfig['handler']);
             })
             ->toArray();
     }
