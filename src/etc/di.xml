@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Magento\Framework\App\Action\AbstractAction">
+        <plugin name="variationsHandler" type="Jh\FpcAlly\Variations\Plugin\Action" />
+    </type>
+
+    <virtualType name="jh_fpcvariations_reader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="converter" xsi:type="object">Jh\FpcAlly\Config\Variations\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Jh\FpcAlly\Config\Variations\SchemaLocator</argument>
+            <argument name="fileName" xsi:type="string">fpc_variations.xml</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Jh\FpcAlly\Config\Variations\Data">
+        <arguments>
+            <argument name="reader" xsi:type="object">jh_fpcvariations_reader</argument>
+            <argument name="cacheId" xsi:type="string">jh_fpcvariations_config_cache</argument>
+        </arguments>
+    </type>
+</config>

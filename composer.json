@@ -1,0 +1,32 @@
+{
+  "name": "wearejh/m2-module-fpc-ally",
+  "description": "Abstractions on top of FPC to aid development",
+  "type": "magento-module",
+  "repositories": [
+    { "type": "vcs", "url": "git@github.com:WeareJH/php-coding-standards.git" }
+  ],
+  "require": {
+    "tightenco/collect": "^5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.0",
+    "squizlabs/php_codesniffer": "^2.7",
+    "friendsofphp/php-cs-fixer": "^2.0",
+    "wearejh/php-coding-standards": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jh\\FpcAlly\\": "src"
+    },
+    "files": [
+      "registration.php"
+    ]
+  },
+  "scripts": {
+    "test": ["@cs", "@unit-tests"],
+    "cs": "phpcs",
+    "cs-fix": "phpcbf",
+    "unit-tests": "phpunit",
+    "coverage" : "phpunit --coverage-text"
+  }
+}

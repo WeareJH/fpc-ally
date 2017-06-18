@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" bootstrap="./test/bootstrap.php">
+    <testsuite name="Unit Tests">
+        <directory suffix="Test.php">./test/unit</directory>
+    </testsuite>
+    <php>
+        <ini name="date.timezone" value="America/Los_Angeles"/>
+        <ini name="xdebug.max_nesting_level" value="200"/>
+    </php>
+    <filter>
+        <whitelist addUncoveredFilesFromWhiteList="true">
+            <exclude>
+                <directory>./test</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

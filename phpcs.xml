@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<ruleset name="FpcAlly">
+    <colors>1</colors>
+    <description>The coding standard for FPC Ally Code Base</description>
+    <file>src</file>
+    <arg value="s"/>
+
+    <exclude-pattern>*.js</exclude-pattern>
+
+    <rule ref="./vendor/wearejh/php-coding-standards/Jh">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="PSR2">
+        <!-- exclude _prepareLayout and _construct --> 
+        <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>  
+
+        <!-- exclude $_template --> 
+        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+    </rule>
+</ruleset>
