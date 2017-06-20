@@ -2,15 +2,13 @@
 
 namespace Jh\FpcAlly\Variations\Plugin;
 
-use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Http\Context;
-use Magento\Framework\App\Request\Http;
 use Jh\FpcAlly\Config\Variations\Data;
 
 /**
  * @author Michael Woodward <michael@wearejh.com>
  */
-class Action
+class Http
 {
     /**
      * @var Data
@@ -28,7 +26,7 @@ class Action
         $this->httpContext    = $httpContext;
     }
 
-    public function aroundDispatch(ActionInterface $subject, callable $proceed, Http $request)
+    public function beforeSendVary()
     {
         foreach ($this->variationsData->getHandlers() as $variationHandler) {
             $this->httpContext->setValue(
@@ -37,7 +35,5 @@ class Action
                 $variationHandler->getVariationDefaultValue()
             );
         }
-        
-        return $proceed($request);
     }
 }
